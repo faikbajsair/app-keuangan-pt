@@ -1733,7 +1733,7 @@ function setSidebarStyle(styleKey) {
       btnBrand.classList.add("border-teal-600");
     }
   } else {
-    // Al-Imam Deep Forest (Default Islamic Dark Slate)
+    // Deep Slate Dark Mode
     sidebar.className = "w-64 bg-slate-900 text-slate-300 flex flex-col flex-shrink-0 border-r border-slate-800 select-none z-30 transition-all duration-300";
     sidebar.style.background = "";
     if (btnDark) {
