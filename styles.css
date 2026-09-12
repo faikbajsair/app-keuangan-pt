@@ -14,15 +14,15 @@
   --primary-hover: #0F766E;
   --primary-light: #F0FDFA;
   --primary-text: #0F766E;
-  --primary-shadow: rgba(13, 148, 136, 0.2);
+  --primary-shadow: rgba(13, 148, 136, 0.25);
   --primary-gradient: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
-  --sidebar-bg: #042F2E;
-  --sidebar-text: #99F6E4;
+  --sidebar-bg: #0F172A;
+  --sidebar-text: #94A3B8;
   --sidebar-active-bg: #0D9488;
-  --border-radius: 1rem;
+  --border-radius: 0.75rem;
 }
 
-/* Theme Helper Classes */
+/* Theme Dynamic Classes */
 .bg-theme-primary {
   background-color: var(--primary-color) !important;
 }
@@ -43,12 +43,38 @@
   background-color: var(--primary-light) !important;
 }
 
+.text-theme-dark {
+  color: var(--primary-text) !important;
+}
+
 .theme-gradient {
   background: var(--primary-gradient) !important;
 }
 
+.theme-shadow {
+  box-shadow: 0 4px 14px 0 var(--primary-shadow) !important;
+}
+
 .theme-rounded {
   border-radius: var(--border-radius) !important;
+}
+
+.btn-primary-theme {
+  background-color: var(--primary-color) !important;
+  color: #FFFFFF !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary-theme:hover {
+  background-color: var(--primary-hover) !important;
+  box-shadow: 0 4px 12px 0 var(--primary-shadow) !important;
+}
+
+/* Focus outline matching theme */
+input:focus, select:focus, textarea:focus {
+  outline: none !important;
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px var(--primary-shadow) !important;
 }
 
 body {

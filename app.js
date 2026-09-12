@@ -625,13 +625,27 @@ function computeDerivedReports() {
 function switchTab(tabId) {
   AppState.currentTab = tabId;
 
-  // Highlight active sidebar item
+  const currentPreset = localStorage.getItem("app_theme_preset") || "sage";
+  const palette = THEME_PALETTES[currentPreset] || THEME_PALETTES.sage;
+  const sidebarStyle = localStorage.getItem("app_sidebar_style") || "dark";
+
+  // Highlight active sidebar item with dynamic theme color
   document.querySelectorAll(".nav-item").forEach(el => {
     const active = el.getAttribute("data-tab") === tabId;
-    el.classList.toggle("bg-indigo-600", active);
-    el.classList.toggle("text-white", active);
-    el.classList.toggle("text-slate-400", !active);
-    el.classList.toggle("hover:bg-slate-800", !active);
+    el.classList.remove("bg-indigo-600", "bg-teal-600", "bg-emerald-600", "bg-purple-600", "text-white", "bg-slate-800");
+    if (active) {
+      el.style.backgroundColor = palette.primary;
+      el.style.color = "#FFFFFF";
+      el.style.boxShadow = `0 4px 14px 0 ${palette.shadow}`;
+    } else {
+      el.style.backgroundColor = "transparent";
+      el.style.boxShadow = "none";
+      if (sidebarStyle === "light") {
+        el.style.color = "#475569";
+      } else {
+        el.style.color = "#94A3B8";
+      }
+    }
   });
 
   // Show/Hide views
@@ -770,10 +784,13 @@ function renderDashboardCharts() {
   const ctxRev = document.getElementById("chart-revenue-expense");
   if (!ctxRev) return;
 
+  const currentPreset = localStorage.getItem("app_theme_preset") || "sage";
+  const palette = THEME_PALETTES[currentPreset] || THEME_PALETTES.sage;
+
   if (revenueExpenseChart) revenueExpenseChart.destroy();
   if (expenseCategoryChart) expenseCategoryChart.destroy();
 
-  // Trend Bar & Line Chart
+  // Trend Bar & Line Chart with Dynamic Pastel Theme Color
   revenueExpenseChart = new Chart(ctxRev, {
     type: "bar",
     data: {
@@ -782,14 +799,14 @@ function renderDashboardCharts() {
         {
           label: "Pendapatan",
           data: [42000000, 55000000, 68000000, 72000000, 67500000, 85000000],
-          backgroundColor: "#4F46E5",
-          borderRadius: 6
+          backgroundColor: palette.primary,
+          borderRadius: 8
         },
         {
           label: "Pengeluaran",
           data: [28000000, 31000000, 34500000, 39000000, 32000000, 36000000],
           backgroundColor: "#F43F5E",
-          borderRadius: 6
+          borderRadius: 8
         }
       ]
     },
@@ -816,7 +833,7 @@ function renderDashboardCharts() {
         labels: ["Gaji & Upah", "Sewa Kantor", "Utilitas & Internet", "Operasional Umum", "Pemasaran"],
         datasets: [{
           data: [25000000, 8500000, 4500000, 6000000, 3500000],
-          backgroundColor: ["#6366F1", "#EC4899", "#F59E0B", "#10B981", "#8B5CF6"]
+          backgroundColor: [palette.primary, "#F43F5E", "#F59E0B", "#10B981", "#8B5CF6"]
         }]
       },
       options: {
@@ -862,7 +879,7 @@ function renderKasBank() {
         ${formatCurrency(tx.Amount)}
       </td>
       <td class="px-4 py-3 text-center">
-        ${tx.Receipt_URL ? `<a href="${tx.Receipt_URL}" target="_blank" class="text-indigo-600 hover:text-indigo-800 font-semibold text-xs inline-flex items-center gap-1"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> Bukti</a>` : '<span class="text-slate-300 text-xs">-</span>'}
+        ${tx.Receipt_URL ? `<a href="${tx.Receipt_URL}" target="_blank" class="text-teal-600 hover:text-teal-800 font-semibold text-xs inline-flex items-center gap-1"><i data-lucide="file-text" class="w-3.5 h-3.5"></i> Bukti</a>` : '<span class="text-slate-300 text-xs">-</span>'}
       </td>
     </tr>
   `).join("");
@@ -927,7 +944,7 @@ function renderInvoices() {
 
   container.innerHTML = list.map(inv => `
     <tr class="hover:bg-slate-50 transition border-b border-slate-100">
-      <td class="px-4 py-3 font-mono font-bold text-xs text-indigo-600">${inv.Invoice_ID}</td>
+      <td class="px-4 py-3 font-mono font-bold text-xs text-teal-700">${inv.Invoice_ID}</td>
       <td class="px-4 py-3 text-sm font-semibold text-slate-900">${inv.Customer_Name}</td>
       <td class="px-4 py-3 text-xs text-slate-500 font-mono">${formatDateIndo(inv.Date)}</td>
       <td class="px-4 py-3 text-xs font-mono font-semibold ${inv.Status === 'Overdue' ? 'text-rose-600' : 'text-slate-600'}">${formatDateIndo(inv.Due_Date)}</td>
@@ -939,7 +956,7 @@ function renderInvoices() {
       </td>
       <td class="px-4 py-3 text-center">
         <div class="flex items-center justify-center gap-1.5">
-          <button onclick="previewInvoice('${inv.Invoice_ID}')" class="p-1.5 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-600 text-xs font-semibold" title="Cetak Faktur">
+          <button onclick="previewInvoice('${inv.Invoice_ID}')" class="p-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-700 text-xs font-semibold" title="Cetak Faktur">
             <i data-lucide="printer" class="w-4 h-4"></i>
           </button>
           ${inv.Status !== 'Paid' ? `
@@ -991,7 +1008,7 @@ function previewInvoice(invId) {
           <p class="text-xs text-slate-500 max-w-sm mt-1">${t.address}</p>
         </div>
         <div class="text-right">
-          <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">FAKTUR PENJUALAN RESMI</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-teal-700">FAKTUR PENJUALAN RESMI</span>
           <h3 class="text-xl font-mono font-bold text-slate-900 mt-1">${inv.Invoice_ID}</h3>
           <p class="text-xs text-slate-500 mt-1">Status: <span class="font-bold text-emerald-600 uppercase">${inv.Status}</span></p>
         </div>
@@ -1036,7 +1053,7 @@ function previewInvoice(invId) {
           </div>
           <div class="flex justify-between text-base font-bold text-slate-900 border-t border-slate-200 pt-2">
             <span>Grand Total:</span>
-            <span class="font-mono text-indigo-600">${formatCurrency(inv.Grand_Total)}</span>
+            <span class="font-mono text-teal-700">${formatCurrency(inv.Grand_Total)}</span>
           </div>
         </div>
       </div>
@@ -1184,11 +1201,11 @@ function renderInventory() {
 
   container.innerHTML = list.map(item => `
     <tr class="hover:bg-slate-50 transition border-b border-slate-100">
-      <td class="px-4 py-3 font-mono font-bold text-xs text-indigo-600">${item.SKU}</td>
+      <td class="px-4 py-3 font-mono font-bold text-xs text-teal-700">${item.SKU}</td>
       <td class="px-4 py-3 text-sm font-semibold text-slate-900">${item.Item_Name}</td>
       <td class="px-4 py-3 text-xs text-slate-600">${item.Unit}</td>
       <td class="px-4 py-3 text-right text-xs font-mono">${formatCurrency(item.Cost_Price)}</td>
-      <td class="px-4 py-3 text-right text-xs font-mono font-bold text-indigo-700">${formatCurrency(item.Selling_Price)}</td>
+      <td class="px-4 py-3 text-right text-xs font-mono font-bold text-teal-700">${formatCurrency(item.Selling_Price)}</td>
       <td class="px-4 py-3 text-center">
         <span class="px-2.5 py-1 rounded-full text-xs font-bold ${item.Stock_Qty <= item.Min_Stock ? 'bg-rose-100 text-rose-700 font-bold border border-rose-200' : 'bg-slate-100 text-slate-800'}">
           ${item.Stock_Qty} ${item.Unit} ${item.Stock_Qty <= item.Min_Stock ? '(! Min)' : ''}
@@ -1228,7 +1245,7 @@ function adjustStockModal(sku) {
     showCancelButton: true,
     confirmButtonText: "Simpan Perubahan",
     cancelButtonText: "Batal",
-    confirmButtonColor: "#4F46E5"
+    confirmButtonColor: "#0D9488"
   }).then(res => {
     if (res.isConfirmed) {
       const type = document.getElementById("adj-type").value;
@@ -1251,7 +1268,7 @@ function renderPayroll() {
 
   container.innerHTML = list.map(p => `
     <tr class="hover:bg-slate-50 transition border-b border-slate-100">
-      <td class="px-4 py-3 font-mono font-bold text-xs text-purple-600">${p.Payroll_ID}</td>
+      <td class="px-4 py-3 font-mono font-bold text-xs text-teal-700">${p.Payroll_ID}</td>
       <td class="px-4 py-3 text-sm font-semibold text-slate-900">${p.Employee_Name}</td>
       <td class="px-4 py-3 text-xs text-slate-600">${p.Period_Month_Year}</td>
       <td class="px-4 py-3 text-right text-xs font-mono">${formatCurrency(p.Basic_Salary)}</td>
@@ -1259,7 +1276,7 @@ function renderPayroll() {
       <td class="px-4 py-3 text-right text-xs font-mono text-rose-600">-${formatCurrency(p.Deductions)}</td>
       <td class="px-4 py-3 text-right text-sm font-bold font-mono text-slate-900">${formatCurrency(p.Net_Salary)}</td>
       <td class="px-4 py-3 text-center">
-        <button onclick="previewPayslip('${p.Payroll_ID}')" class="px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold flex items-center gap-1 mx-auto">
+        <button onclick="previewPayslip('${p.Payroll_ID}')" class="px-2.5 py-1 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-700 text-xs font-semibold flex items-center gap-1 mx-auto">
           <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Slip Gaji
         </button>
       </td>
@@ -1306,9 +1323,9 @@ function previewPayslip(payrollId) {
           <span>Potongan (PPh 21 / BPJS / Pinjaman):</span>
           <span class="font-mono font-semibold">- ${formatCurrency(p.Deductions)}</span>
         </div>
-        <div class="flex justify-between py-3 bg-indigo-50 px-3 rounded-lg text-base font-bold text-indigo-950">
+        <div class="flex justify-between py-3 bg-teal-50 px-3 rounded-lg text-base font-bold text-teal-950">
           <span>Total Gaji Bersih (Take Home Pay):</span>
-          <span class="font-mono text-indigo-600">${formatCurrency(p.Net_Salary)}</span>
+          <span class="font-mono text-teal-700">${formatCurrency(p.Net_Salary)}</span>
         </div>
       </div>
 
@@ -1338,7 +1355,7 @@ function renderJurnalBukuBesar() {
     <tr class="hover:bg-slate-50 transition border-b border-slate-100">
       <td class="px-4 py-3 font-mono text-xs text-slate-500">${j.Journal_ID}</td>
       <td class="px-4 py-3 text-xs text-slate-600 font-mono">${formatDateIndo(j.Date)}</td>
-      <td class="px-4 py-3 text-xs font-mono font-bold text-indigo-600">${j.Account_Code}</td>
+      <td class="px-4 py-3 text-xs font-mono font-bold text-teal-700">${j.Account_Code}</td>
       <td class="px-4 py-3 text-sm font-semibold text-slate-800">${j.Account_Name || j.Description}</td>
       <td class="px-4 py-3 text-right text-sm font-mono font-bold text-slate-900">${j.Debit > 0 ? formatCurrency(j.Debit) : '-'}</td>
       <td class="px-4 py-3 text-right text-sm font-mono font-bold text-slate-900">${j.Credit > 0 ? formatCurrency(j.Credit) : '-'}</td>
@@ -1443,7 +1460,7 @@ function renderSettings() {
         <td class="px-4 py-2.5 font-mono text-xs text-slate-500">${u.userId}</td>
         <td class="px-4 py-2.5 font-semibold text-slate-800">${u.fullName} (${u.username})</td>
         <td class="px-4 py-2.5">
-          <span class="px-2 py-0.5 rounded text-xs font-bold ${u.role === 'Superadmin' ? 'bg-purple-100 text-purple-700' : (u.role === 'Finance' ? 'bg-indigo-100 text-indigo-700' : 'bg-slate-100 text-slate-700')}">
+          <span class="px-2 py-0.5 rounded text-xs font-bold ${u.role === 'Superadmin' ? 'bg-teal-100 text-teal-800' : (u.role === 'Finance' ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-100 text-slate-700')}">
             ${u.role}
           </span>
         </td>
@@ -1617,7 +1634,7 @@ const THEME_PALETTES = {
   }
 };
 
-function applyThemePreset(presetKey) {
+function applyThemePreset(presetKey, isSilent = false) {
   const palette = THEME_PALETTES[presetKey] || THEME_PALETTES.sage;
   const root = document.documentElement;
 
@@ -1631,13 +1648,13 @@ function applyThemePreset(presetKey) {
 
   // Update Buttons Active State UI in Swatches
   document.querySelectorAll(".theme-picker-btn").forEach(btn => {
-    btn.classList.remove("border-teal-600", "border-emerald-500", "border-sky-500", "border-purple-500", "border-amber-500", "border-rose-500", "border-slate-600", "bg-teal-50/50");
+    btn.classList.remove("border-teal-600", "border-amber-500", "border-sky-500", "border-purple-500", "border-rose-500", "border-orange-500", "border-slate-600", "bg-teal-50/50", "bg-amber-50/50", "bg-sky-50/50", "bg-purple-50/50", "bg-rose-50/50", "bg-orange-50/50", "bg-slate-50/50");
     btn.classList.add("border-slate-200");
     const checkIcon = btn.querySelector(".check-icon");
     if (checkIcon) checkIcon.classList.add("hidden");
   });
 
-  const activeBtn = event ? event.currentTarget : document.querySelector(`.theme-picker-btn[onclick*="${presetKey}"]`);
+  const activeBtn = document.querySelector(`.theme-picker-btn[onclick*="${presetKey}"]`);
   if (activeBtn) {
     activeBtn.classList.remove("border-slate-200");
     activeBtn.classList.add("border-teal-600", "bg-teal-50/50");
@@ -1645,14 +1662,42 @@ function applyThemePreset(presetKey) {
     if (checkIcon) checkIcon.classList.remove("hidden");
   }
 
-  // Update Dynamic Color accents in topbar/sidebar/buttons
-  const brandIcon = document.querySelector("#sidebar-nav .w-10");
+  // Update Dynamic Color accents in brand logo
+  const brandIcon = document.getElementById("sidebar-brand-icon");
   if (brandIcon) {
     brandIcon.style.background = palette.gradient;
   }
 
   localStorage.setItem("app_theme_preset", presetKey);
-  showToast("success", `Tema Pastel berganti ke "${palette.name}"`);
+
+  // Instantly re-highlight active sidebar tab with new color
+  const activeNavItem = document.querySelector(`.nav-item[data-tab="${AppState.currentTab}"]`);
+  if (activeNavItem) {
+    activeNavItem.style.backgroundColor = palette.primary;
+    activeNavItem.style.color = "#FFFFFF";
+    activeNavItem.style.boxShadow = `0 4px 14px 0 ${palette.shadow}`;
+  }
+
+  // Update primary action buttons across all views
+  document.querySelectorAll(".btn-primary-theme, .btn-theme-primary").forEach(btn => {
+    btn.style.backgroundColor = palette.primary;
+  });
+
+  // Re-render chart with new palette if on dashboard
+  if (AppState.currentTab === "dashboard") {
+    renderDashboardCharts();
+  }
+
+  // If sidebar is in brand gradient mode, update sidebar background as well
+  const sidebarStyle = localStorage.getItem("app_sidebar_style") || "dark";
+  if (sidebarStyle === "brand") {
+    const sidebar = document.getElementById("sidebar-nav");
+    if (sidebar) sidebar.style.background = palette.gradient;
+  }
+
+  if (!isSilent) {
+    showToast("success", `Tema Pastel berganti ke "${palette.name}"`);
+  }
 }
 
 function setSidebarStyle(styleKey) {
@@ -1673,6 +1718,7 @@ function setSidebarStyle(styleKey) {
 
   if (styleKey === "light") {
     sidebar.className = "w-64 bg-white/95 text-slate-700 flex flex-col flex-shrink-0 border-r border-slate-200 select-none z-30 transition-all duration-300";
+    sidebar.style.background = "";
     if (btnLight) {
       btnLight.classList.remove("border-slate-200");
       btnLight.classList.add("border-teal-600");
@@ -1697,6 +1743,9 @@ function setSidebarStyle(styleKey) {
   }
 
   localStorage.setItem("app_sidebar_style", styleKey);
+  
+  // Re-render active tab styling with correct text colors for sidebar mode
+  switchTab(AppState.currentTab);
 }
 
 function setBorderRadiusStyle(radiusClass) {
@@ -1728,17 +1777,9 @@ function initThemeOnLoad() {
   const savedSidebar = localStorage.getItem("app_sidebar_style") || "dark";
   const savedRadius = localStorage.getItem("app_border_radius") || "rounded-2xl";
 
-  const palette = THEME_PALETTES[savedPreset] || THEME_PALETTES.sage;
-  const root = document.documentElement;
-
-  root.style.setProperty("--primary-color", palette.primary);
-  root.style.setProperty("--primary-hover", palette.hover);
-  root.style.setProperty("--primary-light", palette.light);
-  root.style.setProperty("--primary-text", palette.text);
-  root.style.setProperty("--primary-shadow", palette.shadow);
-  root.style.setProperty("--primary-gradient", palette.gradient);
-
+  applyThemePreset(savedPreset, true);
   setSidebarStyle(savedSidebar);
+  setBorderRadiusStyle(savedRadius);
 }
 
 // ==========================================
