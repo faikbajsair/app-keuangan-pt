@@ -621,6 +621,139 @@
           </div>
         </div>
 
+        <!-- Appearance & Theme Customizer Card (NEW) -->
+        <div class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div>
+              <h4 class="font-extrabold text-slate-900 text-base flex items-center gap-2">
+                <i data-lucide="palette" class="w-5 h-5 text-indigo-600"></i> Kustomisasi Tema & Tampilan Aplikasi (Appearance)
+              </h4>
+              <p class="text-xs text-slate-500 mt-0.5">Ubah palet warna aksen, gaya sidebar, dan estetika visual sesuai identitas brand perusahaan Anda.</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200">
+              Live Theme Engine
+            </span>
+          </div>
+
+          <!-- Color Preset Swatches -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">Pilih Palet Warna Utama (Primary Theme Color)</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+              
+              <!-- Theme 1: Indigo Royale -->
+              <button type="button" onclick="applyThemePreset('indigo')" class="theme-picker-btn p-3 rounded-xl border-2 border-indigo-600 bg-indigo-50/50 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+                  <i data-lucide="check" class="w-4 h-4 check-icon"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Indigo Royale</div>
+                  <div class="text-[10px] text-slate-500">Enterprise Classic</div>
+                </div>
+              </button>
+
+              <!-- Theme 2: Emerald Green -->
+              <button type="button" onclick="applyThemePreset('emerald')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+                  <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Emerald Forest</div>
+                  <div class="text-[10px] text-slate-500">Syariah & ESG</div>
+                </div>
+              </button>
+
+              <!-- Theme 3: Ocean Blue -->
+              <button type="button" onclick="applyThemePreset('ocean')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-sky-600 to-cyan-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+                  <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Ocean Sapphire</div>
+                  <div class="text-[10px] text-slate-500">Banking & Trust</div>
+                </div>
+              </button>
+
+              <!-- Theme 4: Royal Violet -->
+              <button type="button" onclick="applyThemePreset('violet')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-purple-500 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-purple-600 to-violet-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+                  <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Royal Violet</div>
+                  <div class="text-[10px] text-slate-500">Modern FinTech</div>
+                </div>
+              </button>
+
+              <!-- Theme 5: Amber Gold -->
+              <button type="button" onclick="applyThemePreset('amber')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-amber-500 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-amber-600 to-yellow-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+                  <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Amber Gold</div>
+                  <div class="text-[10px] text-slate-500">Wealth & Prestige</div>
+                </div>
+              </button>
+
+              <!-- Theme 6: Crimson Rose -->
+              <button type="button" onclick="applyThemePreset('rose')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-rose-500 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-rose-600 to-pink-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+                  <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Crimson Rose</div>
+                  <div class="text-[10px] text-slate-500">Dynamic Retail</div>
+                </div>
+              </button>
+
+              <!-- Theme 7: Slate Executive -->
+              <button type="button" onclick="applyThemePreset('slate')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-slate-600 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-slate-800 to-slate-600 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+                  <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
+                </div>
+                <div>
+                  <div class="text-xs font-bold text-slate-900">Slate Charcoal</div>
+                  <div class="text-[10px] text-slate-500">Monochrome Pro</div>
+                </div>
+              </button>
+
+            </div>
+          </div>
+
+          <!-- Sidebar & Radius Options -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Gaya Sidebar Navigasi</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="setSidebarStyle('dark')" id="btn-sidebar-dark" class="p-2.5 rounded-xl border-2 border-indigo-600 bg-slate-900 text-white text-xs font-bold text-center">
+                  🌙 Dark Slate
+                </button>
+                <button type="button" onclick="setSidebarStyle('light')" id="btn-sidebar-light" class="p-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-400 text-slate-800 text-xs font-bold text-center">
+                  ☀️ Pure Light
+                </button>
+                <button type="button" onclick="setSidebarStyle('brand')" id="btn-sidebar-brand" class="p-2.5 rounded-xl border-2 border-slate-200 bg-indigo-950 hover:border-indigo-500 text-indigo-200 text-xs font-bold text-center">
+                  🎨 Brand Tone
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Bentuk Sudut UI (Border Radius)</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="setBorderRadiusStyle('rounded-2xl')" id="btn-radius-round" class="p-2.5 rounded-2xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 text-xs font-bold text-center">
+                  Rounded (Modern)
+                </button>
+                <button type="button" onclick="setBorderRadiusStyle('rounded-lg')" id="btn-radius-medium" class="p-2.5 rounded-lg border-2 border-slate-200 hover:border-slate-400 text-slate-700 text-xs font-bold text-center">
+                  Medium (Sleek)
+                </button>
+                <button type="button" onclick="setBorderRadiusStyle('rounded-none')" id="btn-radius-square" class="p-2.5 rounded-none border-2 border-slate-200 hover:border-slate-400 text-slate-700 text-xs font-bold text-center">
+                  Square (Classic)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <!-- Form Tenant -->
           <form onsubmit="handleSaveSettings(event)" class="p-6 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4">

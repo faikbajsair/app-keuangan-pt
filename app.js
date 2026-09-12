@@ -1549,10 +1549,204 @@ function renderLoadingState(isLoading) {
 }
 
 // ==========================================
+// THEME & APPEARANCE CUSTOMIZER ENGINE
+// ==========================================
+const THEME_PALETTES = {
+  indigo: {
+    primary: "#4F46E5",
+    hover: "#4338CA",
+    light: "#EEF2FF",
+    text: "#4338CA",
+    shadow: "rgba(79, 70, 229, 0.25)",
+    gradient: "linear-gradient(135deg, #4F46E5 0%, #6366F1 100%)",
+    name: "Indigo Royale"
+  },
+  emerald: {
+    primary: "#059669",
+    hover: "#047857",
+    light: "#ECFDF5",
+    text: "#047857",
+    shadow: "rgba(5, 150, 105, 0.25)",
+    gradient: "linear-gradient(135deg, #059669 0%, #10B981 100%)",
+    name: "Emerald Forest"
+  },
+  ocean: {
+    primary: "#0284C7",
+    hover: "#0369A1",
+    light: "#F0F9FF",
+    text: "#0369A1",
+    shadow: "rgba(2, 132, 199, 0.25)",
+    gradient: "linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%)",
+    name: "Ocean Sapphire"
+  },
+  violet: {
+    primary: "#7C3AED",
+    hover: "#6D28D9",
+    light: "#F5F3FF",
+    text: "#6D28D9",
+    shadow: "rgba(124, 58, 237, 0.25)",
+    gradient: "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)",
+    name: "Royal Violet"
+  },
+  amber: {
+    primary: "#D97706",
+    hover: "#B45309",
+    light: "#FFFBEB",
+    text: "#B45309",
+    shadow: "rgba(217, 119, 6, 0.25)",
+    gradient: "linear-gradient(135deg, #D97706 0%, #F59E0B 100%)",
+    name: "Amber Gold"
+  },
+  rose: {
+    primary: "#E11D48",
+    hover: "#BE123C",
+    light: "#FFF1F2",
+    text: "#BE123C",
+    shadow: "rgba(225, 29, 72, 0.25)",
+    gradient: "linear-gradient(135deg, #E11D48 0%, #F43F5E 100%)",
+    name: "Crimson Rose"
+  },
+  slate: {
+    primary: "#334155",
+    hover: "#1E293B",
+    light: "#F1F5F9",
+    text: "#1E293B",
+    shadow: "rgba(51, 65, 85, 0.25)",
+    gradient: "linear-gradient(135deg, #1E293B 0%, #475569 100%)",
+    name: "Slate Charcoal"
+  }
+};
+
+function applyThemePreset(presetKey) {
+  const palette = THEME_PALETTES[presetKey] || THEME_PALETTES.indigo;
+  const root = document.documentElement;
+
+  // Set CSS Custom Properties
+  root.style.setProperty("--primary-color", palette.primary);
+  root.style.setProperty("--primary-hover", palette.hover);
+  root.style.setProperty("--primary-light", palette.light);
+  root.style.setProperty("--primary-text", palette.text);
+  root.style.setProperty("--primary-shadow", palette.shadow);
+  root.style.setProperty("--primary-gradient", palette.gradient);
+
+  // Update Buttons Active State UI in Swatches
+  document.querySelectorAll(".theme-picker-btn").forEach(btn => {
+    btn.classList.remove("border-indigo-600", "border-emerald-500", "border-sky-500", "border-purple-500", "border-amber-500", "border-rose-500", "border-slate-600", "bg-indigo-50/50");
+    btn.classList.add("border-slate-200");
+    const checkIcon = btn.querySelector(".check-icon");
+    if (checkIcon) checkIcon.classList.add("hidden");
+  });
+
+  const activeBtn = event ? event.currentTarget : document.querySelector(`.theme-picker-btn[onclick*="${presetKey}"]`);
+  if (activeBtn) {
+    activeBtn.classList.remove("border-slate-200");
+    activeBtn.classList.add("border-indigo-600", "bg-indigo-50/50");
+    const checkIcon = activeBtn.querySelector(".check-icon");
+    if (checkIcon) checkIcon.classList.remove("hidden");
+  }
+
+  // Update Dynamic Color accents in topbar/sidebar/buttons
+  const brandIcon = document.querySelector("#sidebar-nav .w-10");
+  if (brandIcon) {
+    brandIcon.style.background = palette.gradient;
+  }
+
+  localStorage.setItem("app_theme_preset", presetKey);
+  showToast("success", `Tema warna berganti ke "${palette.name}"`);
+}
+
+function setSidebarStyle(styleKey) {
+  const sidebar = document.getElementById("sidebar-nav");
+  if (!sidebar) return;
+
+  const btnDark = document.getElementById("btn-sidebar-dark");
+  const btnLight = document.getElementById("btn-sidebar-light");
+  const btnBrand = document.getElementById("btn-sidebar-brand");
+
+  // Reset button borders
+  [btnDark, btnLight, btnBrand].forEach(b => {
+    if (b) {
+      b.classList.remove("border-indigo-600");
+      b.classList.add("border-slate-200");
+    }
+  });
+
+  if (styleKey === "light") {
+    sidebar.className = "w-64 bg-white text-slate-700 flex flex-col flex-shrink-0 border-r border-slate-200 select-none z-30 transition-all duration-300";
+    if (btnLight) {
+      btnLight.classList.remove("border-slate-200");
+      btnLight.classList.add("border-indigo-600");
+    }
+  } else if (styleKey === "brand") {
+    const currentPreset = localStorage.getItem("app_theme_preset") || "indigo";
+    const palette = THEME_PALETTES[currentPreset] || THEME_PALETTES.indigo;
+    sidebar.className = "w-64 text-white flex flex-col flex-shrink-0 border-r border-slate-800 select-none z-30 transition-all duration-300";
+    sidebar.style.background = palette.gradient;
+    if (btnBrand) {
+      btnBrand.classList.remove("border-slate-200");
+      btnBrand.classList.add("border-indigo-600");
+    }
+  } else {
+    // Dark Charcoal (Default)
+    sidebar.className = "w-64 bg-slate-900 text-slate-300 flex flex-col flex-shrink-0 border-r border-slate-800 select-none z-30 transition-all duration-300";
+    sidebar.style.background = "";
+    if (btnDark) {
+      btnDark.classList.remove("border-slate-200");
+      btnDark.classList.add("border-indigo-600");
+    }
+  }
+
+  localStorage.setItem("app_sidebar_style", styleKey);
+}
+
+function setBorderRadiusStyle(radiusClass) {
+  const btnRound = document.getElementById("btn-radius-round");
+  const btnMed = document.getElementById("btn-radius-medium");
+  const btnSq = document.getElementById("btn-radius-square");
+
+  [btnRound, btnMed, btnSq].forEach(b => {
+    if (b) {
+      b.classList.remove("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+      b.classList.add("border-slate-200", "text-slate-700");
+    }
+  });
+
+  if (radiusClass === "rounded-2xl") {
+    if (btnRound) btnRound.classList.add("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+  } else if (radiusClass === "rounded-lg") {
+    if (btnMed) btnMed.classList.add("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+  } else {
+    if (btnSq) btnSq.classList.add("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+  }
+
+  localStorage.setItem("app_border_radius", radiusClass);
+  showToast("info", "Gaya sudut elemen diperbarui.");
+}
+
+function initThemeOnLoad() {
+  const savedPreset = localStorage.getItem("app_theme_preset") || "indigo";
+  const savedSidebar = localStorage.getItem("app_sidebar_style") || "dark";
+  const savedRadius = localStorage.getItem("app_border_radius") || "rounded-2xl";
+
+  const palette = THEME_PALETTES[savedPreset] || THEME_PALETTES.indigo;
+  const root = document.documentElement;
+
+  root.style.setProperty("--primary-color", palette.primary);
+  root.style.setProperty("--primary-hover", palette.hover);
+  root.style.setProperty("--primary-light", palette.light);
+  root.style.setProperty("--primary-text", palette.text);
+  root.style.setProperty("--primary-shadow", palette.shadow);
+  root.style.setProperty("--primary-gradient", palette.gradient);
+
+  setSidebarStyle(savedSidebar);
+}
+
+// ==========================================
 // INITIALIZATION ON DOM READY
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
   initMockData();
+  initThemeOnLoad();
   
   // Set initial branding
   document.getElementById("top-company-name").textContent = AppState.tenant.companyName;

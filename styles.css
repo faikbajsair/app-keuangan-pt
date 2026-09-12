@@ -1,5 +1,5 @@
 /* ============================================================================
-   APP KEUANGAN PT - CUSTOM STYLES & PRINT MEDIA QUERY
+   APP KEUANGAN PT - CUSTOM STYLES, THEME ENGINE & PRINT MEDIA QUERY
    ============================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -7,6 +7,47 @@
 :root {
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Dynamic Theme Variables (Default: Indigo Royale) */
+  --primary-color: #4F46E5;
+  --primary-hover: #4338CA;
+  --primary-light: #EEF2FF;
+  --primary-text: #4338CA;
+  --primary-shadow: rgba(79, 70, 229, 0.25);
+  --primary-gradient: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  --sidebar-bg: #0F172A;
+  --sidebar-text: #94A3B8;
+  --sidebar-active-bg: #4F46E5;
+  --border-radius: 1rem;
+}
+
+/* Theme Classes */
+.bg-theme-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.hover\:bg-theme-hover:hover {
+  background-color: var(--primary-hover) !important;
+}
+
+.text-theme-primary {
+  color: var(--primary-color) !important;
+}
+
+.border-theme-primary {
+  border-color: var(--primary-color) !important;
+}
+
+.bg-theme-light {
+  background-color: var(--primary-light) !important;
+}
+
+.theme-gradient {
+  background: var(--primary-gradient) !important;
+}
+
+.theme-rounded {
+  border-radius: var(--border-radius) !important;
 }
 
 body {
