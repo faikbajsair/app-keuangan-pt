@@ -1549,76 +1549,76 @@ function renderLoadingState(isLoading) {
 }
 
 // ==========================================
-// THEME & APPEARANCE CUSTOMIZER ENGINE
+// AL-IMAM POS AI - ISLAMIC PASTEL THEME ENGINE
 // ==========================================
 const THEME_PALETTES = {
-  indigo: {
-    primary: "#4F46E5",
-    hover: "#4338CA",
-    light: "#EEF2FF",
-    text: "#4338CA",
-    shadow: "rgba(79, 70, 229, 0.25)",
-    gradient: "linear-gradient(135deg, #4F46E5 0%, #6366F1 100%)",
-    name: "Indigo Royale"
+  sage: {
+    primary: "#0D9488",
+    hover: "#0F766E",
+    light: "#F0FDFA",
+    text: "#0F766E",
+    shadow: "rgba(13, 148, 136, 0.25)",
+    gradient: "linear-gradient(135deg, #0D9488 0%, #14B8A6 100%)",
+    name: "Al-Imam Sage Mint (Islamic Pastel)"
   },
-  emerald: {
-    primary: "#059669",
-    hover: "#047857",
-    light: "#ECFDF5",
-    text: "#047857",
-    shadow: "rgba(5, 150, 105, 0.25)",
-    gradient: "linear-gradient(135deg, #059669 0%, #10B981 100%)",
-    name: "Emerald Forest"
+  medina: {
+    primary: "#D97706",
+    hover: "#B45309",
+    light: "#FEF3C7",
+    text: "#B45309",
+    shadow: "rgba(217, 119, 6, 0.25)",
+    gradient: "linear-gradient(135deg, #D97706 0%, #F59E0B 100%)",
+    name: "Medina Warm Sand (Pastel Gold)"
   },
-  ocean: {
+  firdaus: {
     primary: "#0284C7",
     hover: "#0369A1",
     light: "#F0F9FF",
     text: "#0369A1",
     shadow: "rgba(2, 132, 199, 0.25)",
-    gradient: "linear-gradient(135deg, #0284C7 0%, #0EA5E9 100%)",
-    name: "Ocean Sapphire"
+    gradient: "linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)",
+    name: "Firdaus Sky Blue (Pastel Azure)"
   },
-  violet: {
-    primary: "#7C3AED",
-    hover: "#6D28D9",
+  majlis: {
+    primary: "#8B5CF6",
+    hover: "#7C3AED",
     light: "#F5F3FF",
     text: "#6D28D9",
-    shadow: "rgba(124, 58, 237, 0.25)",
-    gradient: "linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%)",
-    name: "Royal Violet"
+    shadow: "rgba(139, 92, 246, 0.25)",
+    gradient: "linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%)",
+    name: "Majlis Soft Lavender (Pastel Lilac)"
   },
-  amber: {
-    primary: "#D97706",
-    hover: "#B45309",
-    light: "#FFFBEB",
-    text: "#B45309",
-    shadow: "rgba(217, 119, 6, 0.25)",
-    gradient: "linear-gradient(135deg, #D97706 0%, #F59E0B 100%)",
-    name: "Amber Gold"
-  },
-  rose: {
-    primary: "#E11D48",
-    hover: "#BE123C",
+  rosewater: {
+    primary: "#F43F5E",
+    hover: "#E11D48",
     light: "#FFF1F2",
     text: "#BE123C",
-    shadow: "rgba(225, 29, 72, 0.25)",
-    gradient: "linear-gradient(135deg, #E11D48 0%, #F43F5E 100%)",
-    name: "Crimson Rose"
+    shadow: "rgba(244, 63, 94, 0.25)",
+    gradient: "linear-gradient(135deg, #F43F5E 0%, #FB7185 100%)",
+    name: "Rosewater Blossom (Pastel Coral)"
   },
-  slate: {
-    primary: "#334155",
-    hover: "#1E293B",
-    light: "#F1F5F9",
+  saffron: {
+    primary: "#F97316",
+    hover: "#EA580C",
+    light: "#FFF7ED",
+    text: "#C2410C",
+    shadow: "rgba(249, 115, 22, 0.25)",
+    gradient: "linear-gradient(135deg, #F97316 0%, #FB923C 100%)",
+    name: "Saffron Apricot (Pastel Peach)"
+  },
+  qalam: {
+    primary: "#475569",
+    hover: "#334155",
+    light: "#F8FAFC",
     text: "#1E293B",
-    shadow: "rgba(51, 65, 85, 0.25)",
-    gradient: "linear-gradient(135deg, #1E293B 0%, #475569 100%)",
-    name: "Slate Charcoal"
+    shadow: "rgba(71, 85, 105, 0.25)",
+    gradient: "linear-gradient(135deg, #475569 0%, #64748B 100%)",
+    name: "Al-Qalam Platinum (Pastel Slate)"
   }
 };
 
 function applyThemePreset(presetKey) {
-  const palette = THEME_PALETTES[presetKey] || THEME_PALETTES.indigo;
+  const palette = THEME_PALETTES[presetKey] || THEME_PALETTES.sage;
   const root = document.documentElement;
 
   // Set CSS Custom Properties
@@ -1631,7 +1631,7 @@ function applyThemePreset(presetKey) {
 
   // Update Buttons Active State UI in Swatches
   document.querySelectorAll(".theme-picker-btn").forEach(btn => {
-    btn.classList.remove("border-indigo-600", "border-emerald-500", "border-sky-500", "border-purple-500", "border-amber-500", "border-rose-500", "border-slate-600", "bg-indigo-50/50");
+    btn.classList.remove("border-teal-600", "border-emerald-500", "border-sky-500", "border-purple-500", "border-amber-500", "border-rose-500", "border-slate-600", "bg-teal-50/50");
     btn.classList.add("border-slate-200");
     const checkIcon = btn.querySelector(".check-icon");
     if (checkIcon) checkIcon.classList.add("hidden");
@@ -1640,7 +1640,7 @@ function applyThemePreset(presetKey) {
   const activeBtn = event ? event.currentTarget : document.querySelector(`.theme-picker-btn[onclick*="${presetKey}"]`);
   if (activeBtn) {
     activeBtn.classList.remove("border-slate-200");
-    activeBtn.classList.add("border-indigo-600", "bg-indigo-50/50");
+    activeBtn.classList.add("border-teal-600", "bg-teal-50/50");
     const checkIcon = activeBtn.querySelector(".check-icon");
     if (checkIcon) checkIcon.classList.remove("hidden");
   }
@@ -1652,7 +1652,7 @@ function applyThemePreset(presetKey) {
   }
 
   localStorage.setItem("app_theme_preset", presetKey);
-  showToast("success", `Tema warna berganti ke "${palette.name}"`);
+  showToast("success", `Tema Pastel berganti ke "${palette.name}"`);
 }
 
 function setSidebarStyle(styleKey) {
@@ -1666,33 +1666,33 @@ function setSidebarStyle(styleKey) {
   // Reset button borders
   [btnDark, btnLight, btnBrand].forEach(b => {
     if (b) {
-      b.classList.remove("border-indigo-600");
+      b.classList.remove("border-teal-600");
       b.classList.add("border-slate-200");
     }
   });
 
   if (styleKey === "light") {
-    sidebar.className = "w-64 bg-white text-slate-700 flex flex-col flex-shrink-0 border-r border-slate-200 select-none z-30 transition-all duration-300";
+    sidebar.className = "w-64 bg-white/95 text-slate-700 flex flex-col flex-shrink-0 border-r border-slate-200 select-none z-30 transition-all duration-300";
     if (btnLight) {
       btnLight.classList.remove("border-slate-200");
-      btnLight.classList.add("border-indigo-600");
+      btnLight.classList.add("border-teal-600");
     }
   } else if (styleKey === "brand") {
-    const currentPreset = localStorage.getItem("app_theme_preset") || "indigo";
-    const palette = THEME_PALETTES[currentPreset] || THEME_PALETTES.indigo;
-    sidebar.className = "w-64 text-white flex flex-col flex-shrink-0 border-r border-slate-800 select-none z-30 transition-all duration-300";
+    const currentPreset = localStorage.getItem("app_theme_preset") || "sage";
+    const palette = THEME_PALETTES[currentPreset] || THEME_PALETTES.sage;
+    sidebar.className = "w-64 text-white flex flex-col flex-shrink-0 border-r border-teal-900 select-none z-30 transition-all duration-300";
     sidebar.style.background = palette.gradient;
     if (btnBrand) {
       btnBrand.classList.remove("border-slate-200");
-      btnBrand.classList.add("border-indigo-600");
+      btnBrand.classList.add("border-teal-600");
     }
   } else {
-    // Dark Charcoal (Default)
+    // Al-Imam Deep Forest (Default Islamic Dark Slate)
     sidebar.className = "w-64 bg-slate-900 text-slate-300 flex flex-col flex-shrink-0 border-r border-slate-800 select-none z-30 transition-all duration-300";
     sidebar.style.background = "";
     if (btnDark) {
       btnDark.classList.remove("border-slate-200");
-      btnDark.classList.add("border-indigo-600");
+      btnDark.classList.add("border-teal-600");
     }
   }
 
@@ -1706,17 +1706,17 @@ function setBorderRadiusStyle(radiusClass) {
 
   [btnRound, btnMed, btnSq].forEach(b => {
     if (b) {
-      b.classList.remove("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+      b.classList.remove("border-teal-600", "bg-teal-50", "text-teal-700");
       b.classList.add("border-slate-200", "text-slate-700");
     }
   });
 
   if (radiusClass === "rounded-2xl") {
-    if (btnRound) btnRound.classList.add("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+    if (btnRound) btnRound.classList.add("border-teal-600", "bg-teal-50", "text-teal-700");
   } else if (radiusClass === "rounded-lg") {
-    if (btnMed) btnMed.classList.add("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+    if (btnMed) btnMed.classList.add("border-teal-600", "bg-teal-50", "text-teal-700");
   } else {
-    if (btnSq) btnSq.classList.add("border-indigo-600", "bg-indigo-50", "text-indigo-700");
+    if (btnSq) btnSq.classList.add("border-teal-600", "bg-teal-50", "text-teal-700");
   }
 
   localStorage.setItem("app_border_radius", radiusClass);
@@ -1724,11 +1724,11 @@ function setBorderRadiusStyle(radiusClass) {
 }
 
 function initThemeOnLoad() {
-  const savedPreset = localStorage.getItem("app_theme_preset") || "indigo";
+  const savedPreset = localStorage.getItem("app_theme_preset") || "sage";
   const savedSidebar = localStorage.getItem("app_sidebar_style") || "dark";
   const savedRadius = localStorage.getItem("app_border_radius") || "rounded-2xl";
 
-  const palette = THEME_PALETTES[savedPreset] || THEME_PALETTES.indigo;
+  const palette = THEME_PALETTES[savedPreset] || THEME_PALETTES.sage;
   const root = document.documentElement;
 
   root.style.setProperty("--primary-color", palette.primary);

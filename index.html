@@ -32,12 +32,14 @@
   <aside id="sidebar-nav" class="w-64 bg-slate-900 text-slate-300 flex flex-col flex-shrink-0 border-r border-slate-800 select-none z-30 transition-all duration-300">
     <!-- Brand Header -->
     <div class="p-5 flex items-center gap-3 border-b border-slate-800">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-indigo-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-indigo-500/30">
-        <i data-lucide="wallet-cards" class="w-5 h-5"></i>
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-emerald-400 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-teal-500/30">
+        <i data-lucide="sparkles" class="w-5 h-5"></i>
       </div>
       <div>
-        <h1 class="text-white font-extrabold text-sm leading-tight tracking-tight">App Keuangan PT</h1>
-        <span class="text-indigo-400 text-[10px] font-bold uppercase tracking-widest">Enterprise ERP</span>
+        <h1 class="text-white font-extrabold text-sm leading-tight tracking-tight flex items-center gap-1.5">
+          Al-Imam ERP <span class="px-1.5 py-0.2 rounded bg-teal-500/20 text-teal-300 text-[9px] font-bold border border-teal-500/30">AI IS</span>
+        </h1>
+        <span class="text-teal-400 text-[10px] font-bold uppercase tracking-widest">Islamic Financial ERP</span>
       </div>
     </div>
 
@@ -640,80 +642,80 @@
             <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5">Pilih Palet Warna Utama (Primary Theme Color)</label>
             <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
               
-              <!-- Theme 1: Indigo Royale -->
-              <button type="button" onclick="applyThemePreset('indigo')" class="theme-picker-btn p-3 rounded-xl border-2 border-indigo-600 bg-indigo-50/50 hover:shadow-md transition text-left space-y-2 group">
-                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+              <!-- Theme 1: Al-Imam Sage Mint -->
+              <button type="button" onclick="applyThemePreset('sage')" class="theme-picker-btn p-3 rounded-xl border-2 border-teal-600 bg-teal-50/50 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-teal-600 to-emerald-400 shadow-sm flex items-center justify-center text-white text-xs font-bold">
                   <i data-lucide="check" class="w-4 h-4 check-icon"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Indigo Royale</div>
-                  <div class="text-[10px] text-slate-500">Enterprise Classic</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">🌿 Sage Mint</div>
+                  <div class="text-[10px] text-teal-700 font-semibold">Al-Imam Signature</div>
                 </div>
               </button>
 
-              <!-- Theme 2: Emerald Green -->
-              <button type="button" onclick="applyThemePreset('emerald')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-emerald-500 hover:shadow-md transition text-left space-y-2 group">
-                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+              <!-- Theme 2: Medina Warm Sand -->
+              <button type="button" onclick="applyThemePreset('medina')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-amber-400 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-300 shadow-sm flex items-center justify-center text-white text-xs font-bold">
                   <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Emerald Forest</div>
-                  <div class="text-[10px] text-slate-500">Syariah & ESG</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">🕌 Medina Sand</div>
+                  <div class="text-[10px] text-amber-700 font-semibold">Pastel Gold Warm</div>
                 </div>
               </button>
 
-              <!-- Theme 3: Ocean Blue -->
-              <button type="button" onclick="applyThemePreset('ocean')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-sky-500 hover:shadow-md transition text-left space-y-2 group">
-                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-sky-600 to-cyan-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+              <!-- Theme 3: Firdaus Sky Blue -->
+              <button type="button" onclick="applyThemePreset('firdaus')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-sky-400 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-sky-500 to-cyan-300 shadow-sm flex items-center justify-center text-white text-xs font-bold">
                   <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Ocean Sapphire</div>
-                  <div class="text-[10px] text-slate-500">Banking & Trust</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">🌊 Firdaus Sky</div>
+                  <div class="text-[10px] text-sky-700 font-semibold">Pastel Azure Calm</div>
                 </div>
               </button>
 
-              <!-- Theme 4: Royal Violet -->
-              <button type="button" onclick="applyThemePreset('violet')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-purple-500 hover:shadow-md transition text-left space-y-2 group">
-                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-purple-600 to-violet-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+              <!-- Theme 4: Majlis Soft Lavender -->
+              <button type="button" onclick="applyThemePreset('majlis')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-purple-400 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-purple-500 to-violet-300 shadow-sm flex items-center justify-center text-white text-xs font-bold">
                   <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Royal Violet</div>
-                  <div class="text-[10px] text-slate-500">Modern FinTech</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">🪻 Majlis Lilac</div>
+                  <div class="text-[10px] text-purple-700 font-semibold">Pastel Lavender</div>
                 </div>
               </button>
 
-              <!-- Theme 5: Amber Gold -->
-              <button type="button" onclick="applyThemePreset('amber')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-amber-500 hover:shadow-md transition text-left space-y-2 group">
-                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-amber-600 to-yellow-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+              <!-- Theme 5: Rosewater Blossom -->
+              <button type="button" onclick="applyThemePreset('rosewater')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-rose-400 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-rose-400 to-pink-200 shadow-sm flex items-center justify-center text-white text-xs font-bold">
                   <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Amber Gold</div>
-                  <div class="text-[10px] text-slate-500">Wealth & Prestige</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">🌸 Rosewater</div>
+                  <div class="text-[10px] text-rose-700 font-semibold">Pastel Coral Blush</div>
                 </div>
               </button>
 
-              <!-- Theme 6: Crimson Rose -->
-              <button type="button" onclick="applyThemePreset('rose')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-rose-500 hover:shadow-md transition text-left space-y-2 group">
-                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-rose-600 to-pink-500 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+              <!-- Theme 6: Saffron Apricot -->
+              <button type="button" onclick="applyThemePreset('saffron')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-orange-400 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-orange-400 to-amber-200 shadow-sm flex items-center justify-center text-white text-xs font-bold">
                   <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Crimson Rose</div>
-                  <div class="text-[10px] text-slate-500">Dynamic Retail</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">🍑 Saffron Peach</div>
+                  <div class="text-[10px] text-orange-700 font-semibold">Pastel Warm Apricot</div>
                 </div>
               </button>
 
-              <!-- Theme 7: Slate Executive -->
-              <button type="button" onclick="applyThemePreset('slate')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-slate-600 hover:shadow-md transition text-left space-y-2 group">
-                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-slate-800 to-slate-600 shadow-sm flex items-center justify-center text-white text-xs font-bold">
+              <!-- Theme 7: Al-Qalam Platinum -->
+              <button type="button" onclick="applyThemePreset('qalam')" class="theme-picker-btn p-3 rounded-xl border-2 border-slate-200 hover:border-slate-400 hover:shadow-md transition text-left space-y-2 group">
+                <div class="w-full h-8 rounded-lg bg-gradient-to-r from-slate-600 to-slate-400 shadow-sm flex items-center justify-center text-white text-xs font-bold">
                   <i data-lucide="check" class="w-4 h-4 check-icon hidden"></i>
                 </div>
                 <div>
-                  <div class="text-xs font-bold text-slate-900">Slate Charcoal</div>
-                  <div class="text-[10px] text-slate-500">Monochrome Pro</div>
+                  <div class="text-xs font-bold text-slate-900 flex items-center gap-1">🪨 Al-Qalam Slate</div>
+                  <div class="text-[10px] text-slate-600 font-semibold">Pastel Platinum Pro</div>
                 </div>
               </button>
 
@@ -725,14 +727,14 @@
             <div>
               <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Gaya Sidebar Navigasi</label>
               <div class="grid grid-cols-3 gap-2">
-                <button type="button" onclick="setSidebarStyle('dark')" id="btn-sidebar-dark" class="p-2.5 rounded-xl border-2 border-indigo-600 bg-slate-900 text-white text-xs font-bold text-center">
-                  🌙 Dark Slate
+                <button type="button" onclick="setSidebarStyle('dark')" id="btn-sidebar-dark" class="p-2.5 rounded-xl border-2 border-teal-600 bg-slate-900 text-white text-xs font-bold text-center">
+                  🌙 Al-Imam Dark
                 </button>
                 <button type="button" onclick="setSidebarStyle('light')" id="btn-sidebar-light" class="p-2.5 rounded-xl border-2 border-slate-200 bg-white hover:border-slate-400 text-slate-800 text-xs font-bold text-center">
-                  ☀️ Pure Light
+                  ☀️ Pure Soft Light
                 </button>
-                <button type="button" onclick="setSidebarStyle('brand')" id="btn-sidebar-brand" class="p-2.5 rounded-xl border-2 border-slate-200 bg-indigo-950 hover:border-indigo-500 text-indigo-200 text-xs font-bold text-center">
-                  🎨 Brand Tone
+                <button type="button" onclick="setSidebarStyle('brand')" id="btn-sidebar-brand" class="p-2.5 rounded-xl border-2 border-slate-200 bg-teal-950 hover:border-teal-500 text-teal-200 text-xs font-bold text-center">
+                  🎨 Brand Gradient
                 </button>
               </div>
             </div>
@@ -740,7 +742,7 @@
             <div>
               <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Bentuk Sudut UI (Border Radius)</label>
               <div class="grid grid-cols-3 gap-2">
-                <button type="button" onclick="setBorderRadiusStyle('rounded-2xl')" id="btn-radius-round" class="p-2.5 rounded-2xl border-2 border-indigo-600 bg-indigo-50 text-indigo-700 text-xs font-bold text-center">
+                <button type="button" onclick="setBorderRadiusStyle('rounded-2xl')" id="btn-radius-round" class="p-2.5 rounded-2xl border-2 border-teal-600 bg-teal-50 text-teal-700 text-xs font-bold text-center">
                   Rounded (Modern)
                 </button>
                 <button type="button" onclick="setBorderRadiusStyle('rounded-lg')" id="btn-radius-medium" class="p-2.5 rounded-lg border-2 border-slate-200 hover:border-slate-400 text-slate-700 text-xs font-bold text-center">
