@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusat Bantuan & SOP - App Keuangan PT Enterprise</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-6 md:p-12">
+  <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 p-8 text-white flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold mb-3 border border-indigo-500/30">
+          <i class="fa-solid fa-book-open"></i> Standard Operating Procedure (SOP) & Product Knowledge
+        </div>
+        <h1 class="text-3xl font-extrabold tracking-tight">Panduan Penggunaan Sistem Keuangan ERP</h1>
+        <p class="text-slate-400 text-sm mt-1">Standar Akuntansi Keuangan Entitas Mikro Kecil & Menengah (SAK EMKM)</p>
+      </div>
+      <a href="index.html" class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-lg transition">
+        <i class="fa-solid fa-arrow-left"></i> Kembali ke Dashboard
+      </a>
+    </div>
+
+    <!-- Content Tabs / Grid -->
+    <div class="p-8 space-y-10">
+      <!-- 1. Alur 3-Tier Finansial -->
+      <section>
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3 mb-6">
+          <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-sm">1</div>
+          <h2 class="text-xl font-bold text-slate-900">Alur Kerja Finansial 3-Tier (Workflow)</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Tier 1: Pencatatan Dasar</span>
+            <h3 class="font-bold text-slate-900 mt-1 mb-2">Kas, Bank & Invoicing</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Catat mutasi kas masuk/keluar harian dan terbitkan faktur penjualan kepada klien. Setiap transaksi secara otomatis menjurnal pos debet dan kredit tanpa perlu input manual.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Tier 2: Kontrol & Operasional</span>
+            <h3 class="font-bold text-slate-900 mt-1 mb-2">AR, AP, Stok & Gaji</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Pantau jatuh tempo piutang (AR) & utang (AP) dengan alert H-3. Kelola mutasi stok barang dan jalankan payroll engine slip gaji karyawan terintegrasi pos beban.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">Tier 3: Laporan & Analisis</span>
+            <h3 class="font-bold text-slate-900 mt-1 mb-2">Laba Rugi, Neraca & Rasio</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Evaluasi kinerja keuangan real-time dengan Laporan Laba Rugi, Neraca Seimbang (Aktiva = Pasiva), Arus Kas, serta indikator Current Ratio & Net Profit Margin.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Prinsip Double-Entry Bookkeeping -->
+      <section>
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3 mb-6">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-sm">2</div>
+          <h2 class="text-xl font-bold text-slate-900">Prinsip Akuntansi Berpasangan (Double-Entry)</h2>
+        </div>
+
+        <div class="overflow-x-auto rounded-xl border border-slate-200">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+              <tr>
+                <th class="p-3">Kategori Akun</th>
+                <th class="p-3">Saldo Normal</th>
+                <th class="p-3">Jika Bertambah</th>
+                <th class="p-3">Jika Berkurang</th>
+                <th class="p-3">Contoh Akun</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Aset / Aktiva (1-xxxx)</td>
+                <td class="p-3 text-emerald-600 font-bold">Debit (D)</td>
+                <td class="p-3">Debit</td>
+                <td class="p-3">Kredit</td>
+                <td class="p-3 text-slate-500">Kas, Bank, Piutang Usaha, Persediaan</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Kewajiban / Utang (2-xxxx)</td>
+                <td class="p-3 text-indigo-600 font-bold">Kredit (K)</td>
+                <td class="p-3">Kredit</td>
+                <td class="p-3">Debit</td>
+                <td class="p-3 text-slate-500">Utang Usaha, Utang Pajak, Utang Bank</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Ekuitas / Modal (3-xxxx)</td>
+                <td class="p-3 text-indigo-600 font-bold">Kredit (K)</td>
+                <td class="p-3">Kredit</td>
+                <td class="p-3">Debit</td>
+                <td class="p-3 text-slate-500">Modal Disetor, Laba Ditahan</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Pendapatan / Revenue (4-xxxx)</td>
+                <td class="p-3 text-indigo-600 font-bold">Kredit (K)</td>
+                <td class="p-3">Kredit</td>
+                <td class="p-3">Debit</td>
+                <td class="p-3 text-slate-500">Pendapatan Penjualan, Jasa Konsultasi</td>
+              </tr>
+              <tr class="hover:bg-slate-50">
+                <td class="p-3 font-semibold text-slate-900">Beban / Expenses (5/6-xxxx)</td>
+                <td class="p-3 text-emerald-600 font-bold">Debit (D)</td>
+                <td class="p-3">Debit</td>
+                <td class="p-3">Kredit</td>
+                <td class="p-3 text-slate-500">HPP, Beban Gaji, Beban Sewa, Listrik</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3. SOP Modul & Fitur -->
+      <section>
+        <div class="flex items-center gap-3 border-b border-slate-200 pb-3 mb-6">
+          <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm">3</div>
+          <h2 class="text-xl font-bold text-slate-900">Panduan Operasional Fitur (Step-by-Step)</h2>
+        </div>
+
+        <div class="space-y-4">
+          <details class="group border border-slate-200 rounded-xl bg-slate-50 p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-900">
+              <span class="flex items-center gap-2"><i class="fa-solid fa-file-invoice text-indigo-600"></i> Cara Menerbitkan & Melunasi Faktur Penjualan (Invoicing)</span>
+              <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+            </summary>
+            <div class="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-3 space-y-2">
+              <p>1. Buka menu <b>Faktur Penjualan (AR)</b> > Klik tombol <b>+ Buat Faktur Baru</b>.</p>
+              <p>2. Isi Nama Pelanggan, Tanggal Jatuh Tempo, dan pilih item dari daftar inventori.</p>
+              <p>3. PPN 11% akan dihitung otomatis. Klik <b>Simpan & Terbitkan Faktur</b>.</p>
+              <p>4. Setelah disimpan, Anda dapat mencetak faktur atau struk pembayaran via tombol <b>Cetak</b>.</p>
+              <p>5. Saat pelanggan membayar, klik tombol <b>Lunasi</b>, pilih rekening penampung (misal: Bank Mandiri), dan status invoice akan menjadi <b>Paid</b>.</p>
+            </div>
+          </details>
+
+          <details class="group border border-slate-200 rounded-xl bg-slate-50 p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-900">
+              <span class="flex items-center gap-2"><i class="fa-solid fa-money-bill-transfer text-emerald-600"></i> Cara Melakukan Rekonsiliasi Bank</span>
+              <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+            </summary>
+            <div class="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-3 space-y-2">
+              <p>1. Buka menu <b>Rekonsiliasi Bank</b>.</p>
+              <p>2. Pilih rekening bank yang ingin dicocokkan (misal: Bank BCA).</p>
+              <p>3. Masukkan mutasi rekening koran dari m-banking atau file mutasi.</p>
+              <p>4. Klik tombol <b>Jalankan Rekonsiliasi Otomatis</b>.</p>
+              <p>5. Sistem akan mencocokkan mutasi kas internal vs eksternal dan menampilkan selisih (variance) bila ada transaksi yang belum tercatat.</p>
+            </div>
+          </details>
+
+          <details class="group border border-slate-200 rounded-xl bg-slate-50 p-4 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-900">
+              <span class="flex items-center gap-2"><i class="fa-solid fa-users text-purple-600"></i> Cara Menggunakan Engine Payroll & Cetak Slip Gaji</span>
+              <i class="fa-solid fa-chevron-down group-open:rotate-180 transition"></i>
+            </summary>
+            <div class="mt-3 text-sm text-slate-600 leading-relaxed border-t border-slate-200 pt-3 space-y-2">
+              <p>1. Buka menu <b>Penggajian (Payroll)</b> > Klik <b>+ Proses Gaji Baru</b>.</p>
+              <p>2. Masukkan Nama Karyawan, Periode Bulan, Gaji Pokok, Tunjangan, dan Potongan.</p>
+              <p>3. Pilih rekening kas/bank pembayar > Klik <b>Proses & Bayar Gaji</b>.</p>
+              <p>4. Sistem secara otomatis membuat jurnal beban gaji dan memotong kas perusahaan.</p>
+              <p>5. Klik tombol <b>Slip Gaji</b> pada tabel untuk mencetak slip resmi berformat PDF/Print.</p>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- 4. Security & Compliance -->
+      <section class="bg-indigo-50/60 rounded-2xl p-6 border border-indigo-100 flex items-start gap-4">
+        <div class="text-indigo-600 text-2xl mt-1"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="text-sm text-slate-700">
+          <h4 class="font-bold text-slate-900 mb-1">Keamanan & Integritas Data Multi-Tenant</h4>
+          <p class="leading-relaxed">
+            Aplikasi ini menerapkan arsitektur isolasi data Google Sheets berlisensi. Setiap transaksi tervalidasi dengan token sesi, dan seluruh data tersimpan secara terenkripsi di Google Cloud Workspace Anda.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
