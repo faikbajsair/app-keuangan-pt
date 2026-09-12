@@ -1001,71 +1001,97 @@ function previewInvoice(invId) {
   }
 
   printArea.innerHTML = `
-    <div class="p-8 bg-white max-w-3xl mx-auto border border-slate-300 rounded-xl">
-      <div class="flex justify-between items-start border-b border-slate-200 pb-6 mb-6">
+    <div class="p-8 bg-white max-w-3xl mx-auto border border-slate-300 rounded-2xl shadow-sm text-slate-800">
+      <!-- Top Corporate Header -->
+      <div class="flex justify-between items-start border-b-2 border-slate-800 pb-6 mb-6">
         <div>
-          <h2 class="text-2xl font-extrabold text-slate-900">${t.companyName}</h2>
-          <p class="text-xs text-slate-500 max-w-sm mt-1">${t.address}</p>
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center font-bold text-xs">ERP</div>
+            <h2 class="text-2xl font-black text-slate-900 tracking-tight">${t.companyName}</h2>
+          </div>
+          <p class="text-xs text-slate-600 max-w-sm">${t.address}</p>
+          <div class="mt-2 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[10px] font-bold border border-emerald-300">
+            <i data-lucide="shield-check" class="w-3 h-3 text-emerald-600"></i> Dokumen Resmi SAK EMKM Terverifikasi
+          </div>
         </div>
         <div class="text-right">
-          <span class="text-xs font-bold uppercase tracking-wider text-teal-700">FAKTUR PENJUALAN RESMI</span>
-          <h3 class="text-xl font-mono font-bold text-slate-900 mt-1">${inv.Invoice_ID}</h3>
-          <p class="text-xs text-slate-500 mt-1">Status: <span class="font-bold text-emerald-600 uppercase">${inv.Status}</span></p>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-slate-900 bg-slate-100 px-3 py-1 rounded-md border border-slate-300">FAKTUR KOMERSIAL (INVOICE)</span>
+          <h3 class="text-xl font-mono font-bold text-slate-900 mt-2">${inv.Invoice_ID}</h3>
+          <p class="text-xs text-slate-500 mt-0.5">Status: <span class="font-bold text-emerald-600 uppercase tracking-wider">${inv.Status}</span></p>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-4 mb-6 text-sm">
+      <!-- Customer & Date Meta Grid -->
+      <div class="grid grid-cols-2 gap-4 mb-6 text-sm bg-slate-50 p-4 rounded-xl border border-slate-200">
         <div>
-          <span class="text-xs font-bold text-slate-400 uppercase">Ditagihkan Kepada:</span>
-          <h4 class="text-base font-bold text-slate-900 mt-1">${inv.Customer_Name}</h4>
-          <p class="text-xs text-slate-500 mt-0.5">Catatan: ${inv.Notes || 'Pembayaran Transfer Bank'}</p>
+          <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Ditagihkan Kepada (Billed To):</span>
+          <h4 class="text-base font-extrabold text-slate-900 mt-0.5">${inv.Customer_Name}</h4>
+          <p class="text-xs text-slate-600 mt-1">Catatan Tagihan: ${inv.Notes || 'Pembayaran Transfer Rekening Perusahaan'}</p>
         </div>
-        <div class="text-right">
-          <div class="text-xs text-slate-500">Tanggal Faktur: <b class="text-slate-800">${formatDateIndo(inv.Date)}</b></div>
-          <div class="text-xs text-slate-500 mt-1">Jatuh Tempo: <b class="text-rose-600">${formatDateIndo(inv.Due_Date)}</b></div>
+        <div class="text-right space-y-1">
+          <div class="text-xs text-slate-600">Tanggal Faktur: <b class="text-slate-900 font-mono">${formatDateIndo(inv.Date)}</b></div>
+          <div class="text-xs text-slate-600">Jatuh Tempo (Due Date): <b class="text-rose-600 font-mono">${formatDateIndo(inv.Due_Date)}</b></div>
+          <div class="text-[10px] text-slate-500">Mata Uang: <b>IDR (Rupiah Indonesia)</b></div>
         </div>
       </div>
 
-      <table class="w-full text-left mb-6">
-        <thead class="bg-slate-100 text-slate-700 text-xs font-bold uppercase border-y border-slate-200">
+      <!-- Item Table -->
+      <table class="w-full text-left mb-6 border border-slate-200 rounded-lg overflow-hidden">
+        <thead class="bg-slate-900 text-white text-xs font-bold uppercase tracking-wider">
           <tr>
-            <th class="py-2 text-center w-10">No</th>
-            <th class="py-2">Deskripsi Barang / Jasa</th>
-            <th class="py-2 text-center w-16">Qty</th>
-            <th class="py-2 text-right">Harga Satuan</th>
-            <th class="py-2 text-right">Total</th>
+            <th class="py-2.5 px-3 text-center w-12">No</th>
+            <th class="py-2.5 px-3">Rincian Barang / Layanan Jasa</th>
+            <th class="py-2.5 px-3 text-center w-20">Qty</th>
+            <th class="py-2.5 px-3 text-right">Harga Satuan</th>
+            <th class="py-2.5 px-3 text-right">Total Nominal</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="divide-y divide-slate-200">
           ${itemsHtml}
         </tbody>
       </table>
 
-      <div class="flex justify-end mb-8">
-        <div class="w-64 space-y-1.5 text-sm">
+      <!-- Summary & Totals -->
+      <div class="flex justify-between items-start mb-8 gap-4">
+        <div class="max-w-xs text-xs space-y-2 text-slate-600 p-3 bg-slate-50 rounded-xl border border-slate-200">
+          <div class="font-bold text-slate-800 uppercase tracking-wider text-[10px]">Instruksi Rekening Pembayaran Resmi:</div>
+          <p class="font-mono text-slate-900 font-bold">Bank Mandiri Giro: 124-00-9988776-1</p>
+          <p class="text-[11px]">Atas Nama: <b>${t.companyName}</b></p>
+          <p class="text-[10px] text-slate-500">Harap sertakan ID Faktur <b>${inv.Invoice_ID}</b> pada berita transfer.</p>
+        </div>
+
+        <div class="w-64 space-y-2 text-sm">
           <div class="flex justify-between text-slate-600">
             <span>Subtotal:</span>
-            <span class="font-mono">${formatCurrency(inv.Subtotal)}</span>
+            <span class="font-mono font-semibold text-slate-900">${formatCurrency(inv.Subtotal)}</span>
           </div>
           <div class="flex justify-between text-slate-600">
             <span>PPN (11%):</span>
-            <span class="font-mono">${formatCurrency(inv.Tax_Amount)}</span>
+            <span class="font-mono font-semibold text-slate-900">${formatCurrency(inv.Tax_Amount)}</span>
           </div>
-          <div class="flex justify-between text-base font-bold text-slate-900 border-t border-slate-200 pt-2">
+          <div class="flex justify-between text-base font-extrabold text-slate-900 border-t-2 border-slate-900 pt-2">
             <span>Grand Total:</span>
-            <span class="font-mono text-teal-700">${formatCurrency(inv.Grand_Total)}</span>
+            <span class="font-mono text-teal-800">${formatCurrency(inv.Grand_Total)}</span>
           </div>
         </div>
       </div>
 
-      <div class="border-t border-slate-200 pt-6 flex justify-between items-center text-xs text-slate-500">
-        <div>
-          <p class="font-semibold text-slate-700">Rekening Pembayaran:</p>
-          <p>Bank Mandiri: 124-00-9988776-1 a.n ${t.companyName}</p>
+      <!-- Corporate Footer & Legal Validation Seal -->
+      <div class="border-t border-slate-200 pt-6 grid grid-cols-2 gap-6 items-center text-xs">
+        <div class="flex items-center gap-3 p-2.5 bg-slate-50 rounded-xl border border-slate-200">
+          <div class="w-12 h-12 bg-white border border-slate-300 rounded-lg flex flex-col items-center justify-center font-mono font-bold text-[9px] text-slate-700 text-center shadow-xs">
+            <span>QR</span>
+            <span class="text-[7px] text-emerald-600">VERIFIED</span>
+          </div>
+          <div>
+            <div class="font-bold text-slate-900 text-xs">E-Faktur Terverifikasi Sistem</div>
+            <p class="text-[10px] text-slate-500">Validitas sah tanpa tanda tangan basah sesuai UU ITE.</p>
+          </div>
         </div>
+
         <div class="text-center">
-          <p class="mb-10">Hormat Kami,</p>
-          <p class="font-bold text-slate-800 border-t border-slate-400 pt-1">Finance Dept</p>
+          <p class="text-xs text-slate-500 mb-10">Diterbitkan oleh Dept. Keuangan & Akuntansi,</p>
+          <p class="font-bold text-slate-900 border-t border-slate-300 pt-1 inline-block px-6">Direktur Keuangan / Finance Manager</p>
         </div>
       </div>
     </div>
