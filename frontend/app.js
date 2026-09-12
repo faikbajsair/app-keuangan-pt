@@ -1566,7 +1566,7 @@ function renderLoadingState(isLoading) {
 }
 
 // ==========================================
-// AL-IMAM POS AI - ISLAMIC PASTEL THEME ENGINE
+// PASTEL THEME ENGINE
 // ==========================================
 const THEME_PALETTES = {
   sage: {
@@ -1576,7 +1576,7 @@ const THEME_PALETTES = {
     text: "#0F766E",
     shadow: "rgba(13, 148, 136, 0.25)",
     gradient: "linear-gradient(135deg, #0D9488 0%, #14B8A6 100%)",
-    name: "Al-Imam Sage Mint (Islamic Pastel)"
+    name: "Sage Mint (Pastel Emerald)"
   },
   medina: {
     primary: "#D97706",
@@ -1630,7 +1630,7 @@ const THEME_PALETTES = {
     text: "#1E293B",
     shadow: "rgba(71, 85, 105, 0.25)",
     gradient: "linear-gradient(135deg, #475569 0%, #64748B 100%)",
-    name: "Al-Qalam Platinum (Pastel Slate)"
+    name: "Platinum Slate (Pastel Slate)"
   }
 };
 

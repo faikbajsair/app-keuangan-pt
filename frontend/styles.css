@@ -1,5 +1,5 @@
 /* ============================================================================
-   APP KEUANGAN PT - AL-IMAM POS AI ISLAMIC PASTEL THEME ENGINE
+   APP KEUANGAN PT - PASTEL THEME ENGINE
    ============================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
@@ -9,7 +9,7 @@
   --font-arabic: 'Amiri', serif;
   --font-mono: 'JetBrains Mono', monospace;
   
-  /* Al-Imam Signature Sage & Emerald (Default Islamic Pastel) */
+  /* Signature Sage & Emerald (Default Pastel) */
   --primary-color: #0D9488;
   --primary-hover: #0F766E;
   --primary-light: #F0FDFA;
