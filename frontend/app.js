@@ -1483,8 +1483,12 @@ function handleSaveSettings(event) {
   localStorage.setItem("app_gas_url", AppState.apiUrl);
   localStorage.setItem("app_mode", AppState.mode);
 
-  // Update Topbar branding
-  document.getElementById("top-company-name").textContent = AppState.tenant.companyName;
+  // Update Branding (Topbar and Sidebar Header)
+  const topEl = document.getElementById("top-company-name");
+  if (topEl) topEl.textContent = AppState.tenant.companyName;
+  const sidebarEl = document.getElementById("sidebar-company-name");
+  if (sidebarEl) sidebarEl.textContent = AppState.tenant.companyName;
+
   document.getElementById("mode-badge").textContent = AppState.mode === "demo" ? "DEMO MODE (STANDALONE)" : "LIVE GAS CONNECTED";
   document.getElementById("mode-badge").className = AppState.mode === "demo" ? "px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300" : "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
 
@@ -1790,7 +1794,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initThemeOnLoad();
   
   // Set initial branding
-  document.getElementById("top-company-name").textContent = AppState.tenant.companyName;
+  const topEl = document.getElementById("top-company-name");
+  if (topEl) topEl.textContent = AppState.tenant.companyName;
+  const sidebarEl = document.getElementById("sidebar-company-name");
+  if (sidebarEl) sidebarEl.textContent = AppState.tenant.companyName;
+
   document.getElementById("mode-badge").textContent = AppState.mode === "demo" ? "DEMO MODE (STANDALONE)" : "LIVE GAS CONNECTED";
   document.getElementById("mode-badge").className = AppState.mode === "demo" ? "px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300" : "px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
 
